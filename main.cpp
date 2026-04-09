@@ -139,7 +139,7 @@ void SetBlurWindow(HWND hwnd) {
 HRESULT CreateResources(HWND hwnd) {
 	RECT rc;
 	GetClientRect(hwnd, &rc);
-	D2D1_RENDER_TARGET_PROPERTIES props = D2D1::RenderTargetProperties(//Ö§³ÖAlpha»ìºÏ
+	D2D1_RENDER_TARGET_PROPERTIES props = D2D1::RenderTargetProperties(//æ”¯æŒAlphaæ··åˆ
 		D2D1_RENDER_TARGET_TYPE_DEFAULT,
 		D2D1::PixelFormat(DXGI_FORMAT_B8G8R8A8_UNORM, D2D1_ALPHA_MODE_PREMULTIPLIED)
 	);
@@ -159,7 +159,7 @@ HRESULT CreateResources(HWND hwnd) {
 			{ 0.75f, D2D1::ColorF(0x8515CF)},
 			{ 1.00f, D2D1::ColorF(0x1589CF)}
 		};
-		// ´´½¨½¥±äÍ£Ö¹¼¯ºÏºÍÏßÐÔ½¥±ä»­Ë¢
+		// åˆ›å»ºæ¸å˜åœæ­¢é›†åˆå’Œçº¿æ€§æ¸å˜ç”»åˆ·
 		pRenderTarget.Get()->CreateGradientStopCollection(
 			stops, 5, D2D1_GAMMA_2_2, D2D1_EXTEND_MODE_WRAP, pGradientStops.GetAddressOf()
 		);
@@ -187,9 +187,9 @@ HRESULT CreateResources(HWND hwnd) {
 }
 
 void onRender(HWND hwnd) {
-	//¾ØÕó±ä»»
+	//çŸ©é˜µå˜æ¢
 	pRenderTarget.Get()->BeginDraw();
-	pRenderTarget->SetTransform(D2D1::Matrix3x2F::Identity());
+	pRenderTarget.Get()->SetTransform(D2D1::Matrix3x2F::Identity());
 	RECT rc;
 	GetClientRect(hwnd, &rc);
 	D2D1_RECT_F rect = D2D1::RectF(0, 0, rc.right, rc.bottom);
